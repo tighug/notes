@@ -18,16 +18,41 @@ VSCode とは、**Microssoft が開発したオープンソースのテキスト
 
 ### Utility
 
-| Extensions               | Description                                            |
-| ------------------------ | ------------------------------------------------------ |
-| Japanese Language Pack   | 日本語化                                               |
-| Better Comments          | TODO や FIXME など、コメントハイライトを細かく設定可能 |
-| Bracket Pair Colorizer 2 | 括弧の対応を色付きで表示してくれる                     |
-| GitLens                  | Git 機能の拡張                                         |
-| Path Intellisense        | パスの入力を補完                                       |
-| Prettier                 | コードのフォーマッター。多言語に対応                   |
-| Setting Sync             | ユーザー設定や拡張機能の設定を複数 PC 間で同期可能に   |
-| zenkaku                  | コード内の全角の空白を表示                             |
+| Extensions             | Description                            |
+| ---------------------- | -------------------------------------- |
+| Japanese Language Pack | 日本語化                               |
+| Better Comments        | TODO コメントのハイライト              |
+| Bracket Pair Colorizer | 括弧の対応を色付きで表示してくれる     |
+| GitLens                | Git 機能の拡張                         |
+| Log File Highlighter   | Log ファイルのハイライト               |
+| Output Colorizer       | Output のハイライト                    |
+| Setting Sync           | ユーザー設定等を複数 PC 間で同期可能に |
+| Todo Tree              | TODO コメントの機能拡張                |
+| zenkaku                | コード内の全角の空白を表示             |
+
+### Front-end / Back-end
+
+| Extensions                    | Description                   |
+| ----------------------------- | ----------------------------- |
+| npm                           | npm サポート                  |
+| npm Intellisense              | npm 入力補完                  |
+| ESLint                        | JavaScript の Linter          |
+| Prettier                      | Code formatter                |
+| Auto Rename Tag               | HTML タグを自動で Rename する |
+| Auto Close Tag                | HTML タグを自動で閉じる       |
+| JavaScript(ES6) code snippets | ES&コードスニペット           |
+| Vetur                         | Vue の入力補完                |
+| Vue 2 Snippets                | Vue2 のスニペット             |
+| Vue Peek                      | Vue の定義移動・参照          |
+
+### DevOps
+
+| Extensions              | Description           |
+| ----------------------- | --------------------- |
+| Docker                  | Docker サポート       |
+| Better TOML             | TOML 言語サポート     |
+| EditorConfig for VSCode | EditorConfig サポート |
+| DotENV                  | .env サポート         |
 
 ### Markdown
 
@@ -36,11 +61,29 @@ VSCode とは、**Microssoft が開発したオープンソースのテキスト
 | Markdown Alii in One      | 機能拡張                       |
 | Markdown Preview Enhanced | プレビューをカスタマイズ可能に |
 | markdownlint              | リンター                       |
+| Paste Image               | 画像の貼り付け                 |
 
 ### Solidity
 
-- **solidity**
-  Solidity 言語対応。
+| Extensions | Description       |
+| ---------- | ----------------- |
+| solidity   | Solidity 言語対応 |
+
+### CSV
+
+| Extensions  | Description    |
+| ----------- | -------------- |
+| Rainbow CSV | CSV ハイライト |
+
+### Theme
+
+- Atom One Dark Theme
+- Dracura Official
+- One Dark Pro
+- Panda Theme
+- Sublime Material Theme
+- SynthWave '84
+- Material Icon Theme
 
 ## Tips
 
