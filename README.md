@@ -23,7 +23,7 @@ git clone https://gitlab.com/ylab-bc/2019/wiki.git
   - CSS Frameworks：Bootstrap
   - CSS Architecture：BEM
   - Build Tools
-    - Linter & Formatters：[Prettier / ESLint](Front-end/Prettier-ESLint.md)
+    - Linter & Formatters：[Prettier / ESLint](Front-end/ESLint.md)
     - Module Bundlers：[Webpack](./Front-end/Webpack.md)
     - Task Runners：npm scripts
   - Testing：Jest, Enzyme, Cypress
