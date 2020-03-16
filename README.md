@@ -1,11 +1,11 @@
-# Wiki
+# Notes
 
-ブロックチェーン班の情報共有用 Wiki です。
+技術ノート
 
 ## Installation
 
 ```bash
-git clone https://gitlab.com/ylab-bc/2019/wiki.git
+git clone https://github.com/tighug/notes.git
 ```
 
 ## TOC
@@ -17,6 +17,7 @@ git clone https://gitlab.com/ylab-bc/2019/wiki.git
   - Design Patterns：[Design Patterns](./Common/DesignPatterns.md)、[CleanArchitecture](./Common/CleanArchitecture.md)
   - Protocols：SSH、HTTP/HTTPS
   - Editor：[VS Code](./Common/VSCode.md)
+  - [LaTeX](./Common/LaTeX.md)
 - [Front-end](./Front-end/README.md)
   - Language：HTML、CSS、JavaScript
   - CSS Pre-processors：SASS
@@ -55,10 +56,4 @@ git clone https://gitlab.com/ylab-bc/2019/wiki.git
     - Cloud：AWS
 - [Blockchain](./Blockchain/README.md)
   - Language：[Solidity](./Blockchain/Solidity.md)
-  - Tools：[Truffle](./Blockchain/Truffle.md)、[web3js](Blockchain/web3js.md)
-- [Lab](./Lab/README.md)
-  - [余剰電力取引市場](./Lab/余剰電力取引市場/README.md)
-    - [余剰電力取引市場コントラクトの設計](./Lab/余剰電力取引市場/余剰電力取引市場コントラクトの設計.md)
-    - [余剰電力トークンの設計](./Lab/余剰電力取引市場/余剰電力トークンの設計.md)
-  - [スマートビル](./Lab/スマートビル/README.md)
-  - [LaTeX](./Lab/LaTeX.md)
+  - Tools：[Truffle](./Blockchain/Truffle.md)、[web3js](./Blockchain/web3js.md)、[OpenZeppelin](./Blockchain/OpenZeppelin.md)
