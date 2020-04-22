@@ -1,17 +1,28 @@
 # Common
 
-- [Frontend Developer](https://github.com/kamranahmedse/developer-roadmap)
-- [Web Developer Roadmap 2018 が 2019 年版になっていたので比較してみる | Qiita](https://qiita.com/ushironoko/items/a2420cf4a28af56907e5)
+## Roadmap
+
+![web-developer](images/common.png)
+Ref : [Web Developer Roadmap - 2020](https://github.com/kamranahmedse/developer-roadmap/)
 
 ## TOC
 
-- Version Control：Git
-- Terminal：Bash
-- Design Principles：SOLID / KISS / YAGNI
-- Design Patterns：Design Patterns、Clean Architecture
-- Protocols：SSH、HTTP/HTTPS
-- Editor：VS Code
-
-## Roadmap
-
-![CommonRoadmap](images/README_CommonRoadmap.png)
+- Version Control
+  - [x] [Git](./Common/Git.md)
+- Basic Terminal Usage
+  - [x] [Linux](./Common/Linux.md)
+  - [x] [Fish](./Common/fish.md)
+  - [x] [Starship](./Common/Starship.md)
+  - [x] [WSL](./Common/WSL.md)
+- Data Structures & Algorithms
+- GitHub
+- Licenses
+- Semantic Versioning
+- SSH
+- HTTP/HTTPS and APIs
+- Design Principles
+- Design Patterns
+  - [x] [SOLID / KISS / YAGNI](./Common/DesignPrinciples.md)
+  - [x] [Design Patterns](./Common/DesignPatterns.md)
+  - [x] [CleanArchitecture](./Common/CleanArchitecture.md)
+- Character Encodings

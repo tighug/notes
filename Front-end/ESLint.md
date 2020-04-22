@@ -2,25 +2,33 @@
 
 ESLint とは、**JavaScript のための静的検証ツール**の一つです。
 
-- [Prettier 入門 ～ ESLint との違いを理解して併用する～ - Qiita](https://qiita.com/soarflat/items/06377f3b96964964a65d)
-
 ## Installation
 
 ```bash
 yarn add -D eslint
 ```
 
-## Usage
+## CUI
 
-`extends`
+```bash
+eslint [file] # Linting file
 
-拡張したい機能を記述します。[Extends](#Extends)を参照して下さい。
+eslint --init # Generate .eslintrc.js
+```
 
-`plugins`
+## Configuration
 
-使用したいプラグインを記述します。大体`extends`と関係します。[Extends](#Extends)を参照して下さい。
+`.eslintrc`に記述します。
 
-`parser`
+### `extends`
+
+既存の設定を拡張します。できる限り`extends`で対応し、オリジナルの設定のみ個別で上書きすると楽です。
+
+### `plugins`
+
+使用したいプラグインを記述します。大体`extends`と関係します。
+
+### `parser`
 
 使用したいパーサーを記述します。TypeScript や Babel 等、使いたい言語に合わせて変更します。
 
@@ -38,7 +46,7 @@ ES6 の`import/export`を使いたい場合、以下で ES Modules 機能を有�
 
 ### `env`
 
-最低限、以下の 3 つを設定します。他は`extends`で`recommended`を選択すると大体自動で設定してくれます。
+最低限、以下の三つを設定します。他は`extends`で`recommended`を選択すると大体自動で設定してくれます。
 
 ```json
 {
@@ -54,13 +62,13 @@ ES6 の`import/export`を使いたい場合、以下で ES Modules 機能を有�
 
 ルールを上書きできます。できる限り`extends`の`recommended`を採用したいので、あまり記述しません。
 
-## Extends
+## Integration
 
-プロジェクトで用いる言語やツールにに応じて拡張を行います。
+プロジェクトで用いる言語やツールに応じて統合を行います。
 
 ### Prettier
 
-Prettier とは、**コードフォーマッター**の一つです。Javascript や、CSS、Markdown 等に対応しています。ESLint もフォーマット機能を持っていますが、Prettier の方が優れています。そのため、**フォーマットは Prettier** 、**構文チェックは ESLint** が行うように併用します。
+Prettier とは、**コードフォーマッター**の一つです。Javascript や、CSS、Markdown 等に対応しています。ESLint もフォーマット機能を持っていますが、Prettier の方が優れています。そのため、**フォーマットは Prettier** 、**構文チェックは ESLint** が行うように併用するのが一般的です。
 
 ```bash
 yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
@@ -72,15 +80,15 @@ yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
 
 また、`.eslintrc.json`に以下を記述することで、3 つの設定を一度に行います。
 
-1. `eslint-plugin-prettier`を有効に
-2. `rule`に`prettier/prettier: "error"`を設定
-3. `eslint-config-prettier`を拡張
-
 ```json
 {
   "extends": ["plugin:prettier/recommended"]
 }
 ```
+
+1. `eslint-plugin-prettier`を有効に
+2. `rule`に`prettier/prettier: "error"`を設定
+3. `eslint-config-prettier`を拡張
 
 **※ ルールを優先させるため、Prettier 系の`extends`はできるだけ後ろに記述して下さい**
 
@@ -117,8 +125,7 @@ yarn add -D @typescript-eslint/eslint-plugin @typescript-eslint/parser
   "plugins": ["@typescript-eslint"],
   "extends": [
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended" // Prettierも使う場合
+    "plugin:@typescript-eslint/recommended"
   ]
 }
 ```
@@ -155,29 +162,64 @@ yarn add -D eslint-plugin-jest
 }
 ```
 
-## Config
+## Example
 
-### `.prettierrc`
+ESLint + Prettier + XXX
 
-| option                    | default     | description                                          |
-| ------------------------- | ----------- | ---------------------------------------------------- |
-| printWidth                | 80          | 折り返す行の長さ                                     |
-| tabWidth                  | 2           | タブ幅                                               |
-| useTabs                   | false       | スペースではなくタブでインデントする                 |
-| semi                      | true        | ステートメントの最後にセミコロンを記述する           |
-| singleQuote               | false       | 二重引用符の代わりに単一引用符を使用する             |
-| quoteProps                | "as-needed" | オブジェクトのプロパティに引用符を付けるか           |
-| jsxSingleQuote            | false       | JSX で、二重引用符の代わりに単一引用符を使用する     |
-| trailingComma             | "none"      | 複数行の場合、可能な鍵地末尾のコンマを記述する       |
-| bracketSpacing            | true        | オブジェクトリテラルの各カッコの間にスペースを入れる |
-| jsxBracketSameLine        | false       | JSX のブラケットを最後の行の末尾に置く               |
-| arrowParens               | "avoid"     | アロー関数の引数をカッコで囲むか                     |
-| rangeStart                | 0           |                                                      |
-| rangeEnd                  | Infinity    |                                                      |
-| parser                    | -           | 使用するパーサー                                     |
-| filepath                  | -           | 使用するファイル                                     |
-| requirePragma             | false       | プラグマが必要か                                     |
-| insertPragma              | false       | プラグマを挿入するか                                 |
-| proseWrap                 | "preserve"  |                                                      |
-| htmlWhitespaceSensitivity | "css"       |                                                      |
-| endOfLine                 | "auto"      | 行末                                                 |
+### Packages
+
+```bash
+yarn add -D eslint
+yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
+
+yarn add -D @typescript-eslint/eslint-plugin  # When uging TyepScript
+yarn add -D @typescript-eslint/parser         # When using TypeScript
+yarn add -D eslint-plugin-react # When using React
+yarn add -D eslint-plugin-vue   # When using Vue
+```
+
+### .eslintrc.json
+
+```json
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",  // When using TypeScript
+    "plugin:react/recommended",     // When using React
+    "plugin:vue/recommended",       // When using Vue
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",  // When using TypeScript
+    "prettier/babel"                // When using JavaScript
+    "prettier/react",               // When using React
+    "prettier/vue"                  // When using Vue
+  ],
+  "parser": "@typescript-eslint/parser",  // When using TypeScript
+  "parseOptions": {
+    "sourceType": "module",         // When using ES6 import/export
+    "ecmaFeatures": {               // When using React
+      "jsx": true
+    }
+  },
+  // Need installing the plugin to use
+  "plugins": [
+    "@typescript-eslint",           // When using TypeScript
+    "babel",                        // When using JavaScript
+    "react",                        // When using React
+    "vue"                           // When using Vue
+  ],
+  "rules": {}
+}
+```
+
+## References
+
+- [ESLint](https://eslint.org/)
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
+- [Prettier 入門 ～ ESLint との違いを理解して併用する～ - Qiita](https://qiita.com/soarflat/items/06377f3b96964964a65d)
+- [ESLint 最初の一歩 | Qiita](https://qiita.com/mysticatea/items/f523dab04a25f617c87d)

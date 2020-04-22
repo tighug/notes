@@ -1,9 +1,6 @@
 # Git
 
-Git とは、**プログラムのソースコードなどの変更履歴を記録・追跡するための、分散型バージョン管理ソフト**です。Git を使うことで、複数人で共有しながらバージョン管理ができます。
-
-- [サルでもわかる Git 入門](https://backlog.com/ja/git-tutorial/)
-- [いまさらだけど Git を基本から分かりやすくまとめてみた | Qiita](https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0)
+Git とは、バージョン管理システム（VCS : Version Control System）の一つで、プログラムのソースコードなどの変更履歴を記録・追跡します。Gitを使うことで、複数人でのプログラムの共有や、過去のプログラムの復元が可能になります。
 
 ## Installation
 
@@ -121,9 +118,10 @@ git config --global user.email "e-mail@gmail.com"
 
 ### ブランチモデル
 
-有名なものは以下の二種類。
-
 - git-flow
 - GitHub Flow
-  - master
-  - topic
+
+## References
+
+- [サルでもわかる Git 入門](https://backlog.com/ja/git-tutorial/)
+- [いまさらだけど Git を基本から分かりやすくまとめてみた | Qiita](https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0)

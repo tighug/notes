@@ -1,76 +1,137 @@
 # Webpack
 
-Webpack とは、**Web アプリを作成する際に複数のコンテンツファイル（主に JavaScript）を 1 つにまとめるツール**です。ブラウザとサーバー間のリクエスト数が減少し、ファイルの転送が高速となります。CSS や画像もバンドル可能です。
-
-- [最新版で学ぶ webpack 4 入門 JavaScript のモジュールバンドラ](https://ics.media/entry/12140/)
+Webpack とは、**複数のモジュールを一つのファイルにまとめるツール**です。自動的にモジュールの依存関係を解決します。また、一つにまとめることで Web サーバーへのリクエスト回数を減らせます。
 
 ## Installation
-
-本体の`webpack`と、コマンド実行用の`webpack-cli`を `devDependecies`にインストールします。
 
 ```bash
 yarn add -D webpack webpack-cli
 ```
 
-ローカルサーバーを立てたい時は`webpack-dev-server`もインストールします。
+- `webpack` : 本体
+- `webpack-cli` : CLI ツール
+
+## CLI
 
 ```bash
-yarn add -D webpack-dev-server
+webpack-cli init  # webpack.config.jsを生成する
+
+webpack --config [config file]
 ```
 
-## Config - `webpack.config.js`
+## Configuration
 
-```JS
+Ref : [Webpack Configuration](https://webpack.js.org/configuration/)
+
+`webpack.config.js`に記述します。
+
+### `mode`
+
+最適化モード
+`"production" | "development" | "none"`
+
+### `context`
+
+ベースディレクトリ（デフォルトは 現在のディレクトリ）。絶対パスで指定
+`string`
+
+### `entry`
+
+バンドルプロセスを開始するポイント。配列やオブジェクトが渡せば、複数のアイテムを処理可能
+`string | object | array`
+
+### `output`
+
+出力する方法と場所
+`string | object`
+
+- `path` : 出力先のディレクトリのパス。絶対パス
+- `filename` : 出力ファイル名
+
+### `module`
+
+異なるタイプのモジュールの扱われ方。主に`rules`を記述する
+
+- `rules`
+  - `test` : 対象とするファイル。RegExp で記述
+  - `include` : 対象とするディレクトリ
+  - `exclude` : 非対象とするディレクトリ
+  - `use` : 使用するローダー
+
+### `resolve`
+
+モジュールの解決方法
+`object`
+
+- `extensions` : 拡張子を省略して`import`に記述する
+
+### `target`
+
+対象とする実行環境
+`string | function(compiler)`
+
+#### string options
+
+- `node` : Node.js 用
+- `web` : ブラウザ用
+- `electron-main` : Electron のメインプロセス用
+- `electron-renderer` : Electron のレンダラープロセス用
+- `electron-preload` : Electron のレンダラープロセス用（preload）
+
+### `plugins`
+
+使用するプラグイン
+`[Plugin]`
+
+## Plugins
+
+Ref : [Webpack Plugins](https://webpack.js.org/plugins/)
+
+よく使うものを抜粋しました。
+
+- `HotModuleReplacementPlugin` : HMR を有効にする
+- `HtmlWebpackPlugin` : バンドルを提供する HTML ファイルを簡単に作成する
+- `CopyWebpackPlugin` : 個々のファイルまたはディレクトリ全体をビルドディレクトリにコピーする
+
+## Loaders
+
+Ref : [Webpack Loaders](https://webpack.js.org/loaders/)
+
+- `babel-loader` : JavaScript
+- `ts-loader` : TypeScript
+- `css-loader` : CSS
+- `eslint-loader` : ESLint
+
+## Example
+
+```js
 module.exports = {
-  target: 'node',
+  target: "node",
   mode: "development",
   entry: {
-    main: "./src/3_adapters/main.ts",
-    server: "./src/4_frameworks/server.ts"
+    main: "./src/main.ts",
+    server: "./src/server.ts",
   },
   output: {
     path: `${__dirname}/build`,
-    filename: "[name].js"
+    filename: "[name].js",
   },
   module: {
-    rules: [
-      { test: /\.ts$/, exclude: /node_modules/, use: "ts-loader" }
-    ]
+    rules: [{ test: /\.ts$/, exclude: /node_modules/, use: "ts-loader" }],
   },
-  // import 文で .ts ファイルを解決するため
   resolve: {
     extensions: [".ts", ".js"],
   },
-  // webpack-dev-serverを使う場合
-  devServer: {
-    contentBase: path.join(__dirname, 'build/public'),
-    inline: true,
-    watchContentBase: true,
-    open: true
-  }
 };
 ```
 
-### 詳細
+## Tips
 
-| name         | description                                                              |
-| ------------ | ------------------------------------------------------------------------ |
-| `target`     | Nodejs なら`node`、Browser なら`web`                                     |
-| `mode`       | 開発時（ソースマップ有効）は `development`、`production`は公開時（圧縮） |
-| `entry`      | エントリーポイント                                                       |
-| `output`     |                                                                          |
-| - `path`     | 出力ディレクトリのパス                                                   |
-| - `filename` | 出力ファイル名                                                           |
-| `module`     |                                                                          |
-| - `rules`    |                                                                          |
-| -- `test`    | 対象とする拡張子（e.g. `/\.ts$/`）                                       |
-| -- `use`     | 使用するローダー（e.g. `ts-loader`）                                     |
-| `plugin`     | 使用するプラグイン                                                       |
+### 開発用のローカルサーバーを立てる
 
-#### よく使うプラグイン
+- [Webpack Dev Server](./WebpackDevServer.md)
 
-| name                         | description                                                          |
-| ---------------------------- | -------------------------------------------------------------------- |
-| `HotModuleReplacementPlugin` | ホットリロードを有効にする                                           |
-| `HtmlWebpackPlugin`          | バンドルを提供する HTML ファイルを簡単に作成する                     |
-| `CopyWebpackPlugin`          | 個々のファイルまたはディレクトリ全体をビルドディレクトリにコピーする |
+## References
+
+- [Webpack](https://webpack.js.org/)
+- [最新版で学ぶ webpack 4 入門 JavaScript のモジュールバンドラ](https://ics.media/entry/12140/)
